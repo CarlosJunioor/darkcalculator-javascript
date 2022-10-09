@@ -1,0 +1,163 @@
+ * {
+    padding: 0;
+    margin: 0;
+ }
+
+ body {
+    background-color: #B85DE3;
+ }
+
+ button {
+    cursor: pointer;
+ }
+
+ button:hover {
+    background-color: rgb(49, 47, 47);
+    color: #fff;
+ }
+ .menu-nav{
+   position: relative;
+   width: 100%;
+   background-color: rgb(51, 51, 49);
+   box-sizing: border-box;
+ }
+ .ul-nav{
+   display: flex;
+   padding: 1rem;
+   margin-left: 60%;
+   position: relative;
+ }
+ .ul-nav li{
+   list-style-type: none;
+   margin-right: 1rem;
+   padding: 1rem;
+   position: relative;
+ }
+ .ul-nav li a{
+   text-decoration: none;
+   color: rgb(233, 227, 227);
+   font-size: 1.1rem;
+   border: 1px solid #B85DE3;
+   padding: 10px 15px;
+   border-radius: 5px;
+   transition: 0.5s;
+ }
+ .ul-nav li a:hover{
+   background-color: #a836dd;
+ }
+ .logo{
+   line-height: 80px;
+   position: absolute;/*ajustando a posição*/
+
+   letter-spacing: 3px;
+   color: #fff;
+   font-size: 1.5rem;
+   font-weight: lighter;
+   margin-left: 5%;
+ }
+ .logo::before{
+   content: '';
+   display: inline-block;
+   width: 30px;
+   height: 15px;
+   background-color: #B85DE3;/*background-color e não color*/
+   margin-right: 5px;
+ }
+ .logo::after{
+   content: '|';
+   animation: blink 1.5s infinite;
+ }
+ .description{
+   animation: animationdescription 2s forwards;
+ }
+
+ .calculadora {
+    background-color: rgb(51, 51, 49);
+    height: 35rem;
+    width: 25rem;
+    position: relative;
+    text-align: center;
+    margin-left: auto;/*alinhando centro*/
+    margin-right: auto;/*alinhando centro*/
+    margin-top: 5rem;
+ }
+
+ .zero {
+    width: 6rem;
+    margin-top: 2rem;
+ }
+
+ .result {
+    height: 2rem;
+    width: 100%;
+ }
+
+ .botoes button {
+    width: 6rem;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem;
+    background-color: initial;
+    color: #fff;
+    font-weight: lighter;
+ }
+ .botoes button:hover{
+   background-color: #B85DE3;
+ }
+
+ .operadores button{
+    width: 6rem;   
+    font-size: 20px;
+    color: #B85DE3; 
+ }
+
+ .operadores button:hover{
+   color:#fff;
+ }
+
+ input[type=text]{
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 1px solid #B85DE3;
+    background-color: initial;
+    color: #fff;
+    font-size: 1rem;
+ }
+
+ input[type=text]::placeholder{
+   color: #B85DE3;
+ }
+
+ .teclas{
+   background-color: rgb(43, 42, 42);
+   border-radius: 5px;
+   margin-top: 1rem;
+   height: 30rem;
+}
+.rodape{
+   padding: 1rem;
+   margin-top: 8rem;
+   background-color: rgb(43, 42, 42);
+   text-align: center;
+}
+.rodape p{
+   color: #fff;
+   font-size: 1.1em;
+   letter-spacing: 5px;
+}
+@keyframes animationdescription{
+   from{
+      background-color: initial;
+   }
+   to{
+      background-color: #a836dd;
+   }
+}
+@keyframes blink{
+   0%{opacity: 1;}
+   50%{opacity: 0;}
+   100%{opacity: 1;}
+}
+
