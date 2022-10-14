@@ -92,7 +92,7 @@
     width: 100%;
  }
 
- .botoes button {
+ .button {
     width: 6rem;
     font-size: 20px;
     margin-bottom: 1rem;
@@ -106,7 +106,7 @@
    background-color: #B85DE3;
  }
 
- .operadores button{
+ button{
     width: 6rem;   
     font-size: 20px;
     color: #B85DE3; 

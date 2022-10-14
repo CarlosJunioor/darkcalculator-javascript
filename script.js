@@ -1,54 +1,45 @@
-let btns = document.querySelectorAll('.botoes button');
-let expression = document.querySelector('input[type=text]');
-let result = document.querySelector('.screen-result input[type=text]');
+const display = document.querySelector('.display')
+const controlButtons = document.querySelector('.controls').children
+const allSymbols = ['+', '-', '*', '/', 'C', '=']
 
-function getText(){
-    expression.value += `${this.innerText}`;//expression.value, expression.placeholder , etc !
-}
-btns.forEach((e) => { /*add texto do botão ao input expressão */
-    e.addEventListener('click',getText);
-});
+let firstValue = ''
+let secondValue = ''
+let symbol = ''
+let result = ''
 
-function calcular(n,operator){
-    let result = 0;
-    let op;
+const calculate = () => {
+    firstValue = parseFloat(firstValue)
+    secondValue = parseFloat(secondValue) 
 
-    result = n[0];
-    for(let i = 0; i < n.length; ++i){
-        operator[i] === '+' ? result +=  n[i + 1] : result = result;
-        operator[i] === '-' ? result -= n[i + 1] : result = result;
-        operator[i] === '/' ? result /= n[i + 1] : result = result;
-        operator[i] === '*' ? result *= n[i + 1] : result = result;
-    }
-    return result;
+    if (symbol === '+') result = firstValue + secondValue
+    if (symbol === '-') result = firstValue - secondValue
+    if (symbol === '*') result = firstValue * secondValue
+    if (symbol === '/') result = firstValue / secondValue
+    display.innerText = result
 }
 
-let btn_result = document.querySelector('.result button');
-btn_result.addEventListener('click', (e) => {
-    let n = [],operator = [];//array num e array operator
-    let numberclean1,j;
-    numberclean1 = j = 0;
-    
-    for(let i = 0; i < expression.value.length; ++i){//255+10=
-        if(isNaN(+expression.value[i])){
-            operator[j] = expression.value[i];
-            n[j] = +numberclean1;
-            console.log(n[j]);
-            ++j;
-            numberclean1 = '';//note que numberclean1 não é um number,portanto resetá-lo com 0 dara erro!!
+for (let button of controlButtons) {
+    button.addEventListener('click', () => {
+        const { innerText: btnValue } = button
+        const btnValueIsSymbol = allSymbols.includes(btnValue)
+
+        if (!secondValue && btnValue === '=') return null
+
+        if (btnValue === 'C') {
+            firstValue = secondValue = symbol = ''
+            return display.innerText = ''
         }
-        numberclean1 += expression.value[i];
-    }
-  
-    result.value = calcular(n,operator);
-    expression.value = '';
-});
-
-let clear = document.querySelector('.clear');
-clear.addEventListener('click',(e) => {
-    expression.value = '';
-    result.value = '';
-});
+        if (firstValue && btnValueIsSymbol){
+            secondValue && calculate()
+            symbol = btnValue
+        }
+        else if (!symbol) firstValue += btnValue
+        else if (symbol) secondValue += btnValue
+        if (btnValue !== '='){
+            display.innerText += btnValue
+        }
+    })
+}
 
 function typewriter(){
     let logo = document.querySelector('.logo');
